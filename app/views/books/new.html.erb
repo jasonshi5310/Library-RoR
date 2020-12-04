@@ -1,0 +1,25 @@
+<div> Create A New Book</div>
+<br>
+<%= form_with scope: :book, url: books_path, local:true do |form| %>
+<p>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+</p>
+<p>
+    <%= form.label :author %><br>
+    <%= form.text_field :author %>
+</p>
+<p>
+    <%= form.label :ISBN %><br>
+    <%= form.text_field :ISBN %>
+</p>
+<p>
+    <%= form.label :copies %><br>
+    <%= form.text_field :copies %>
+</p>
+
+<p> <%= form.submit %>
+</p>
+
+<%end%>
+
