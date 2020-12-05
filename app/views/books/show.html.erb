@@ -1,0 +1,22 @@
+<h1>Successful!</h1>
+<p> 
+<strong>Title:</strong>
+<%= @book.title %>
+</p>
+<p> 
+<strong>Author:</strong>
+<%= @book.author %>
+</p>
+<p> 
+<strong>ISBN:</strong>
+<%= @book.isbn %>
+</p>
+<p> 
+<strong>Copies:</strong>
+<%= @book.copies %>
+</p>
+<br>
+<button> <%= link_to "View other books", books_path %> </button>
+<br>
+<br>
+<button> <%= link_to "Back to Admin", administrator_index_path %> </button>

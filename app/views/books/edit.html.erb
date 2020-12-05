@@ -1,6 +1,5 @@
-<div> Create A New Book</div>
-<br>
-<%= form_with scope: :book, url: books_path, local:true do |form| %>
+<h1> Edit A Book</h1>
+<%= form_with(model: @book, local:true) do |form| %>
 <p>
     <%= form.label :title %><br>
     <%= form.text_field :title %>
@@ -37,5 +36,4 @@
     </ul>
 </div>
 <%end%>
-<button> <%= link_to "Cancel", administrator_index_path %> </button>
-
+<button> <%= link_to "Back to admin page", administrator_index_path %> </button>
