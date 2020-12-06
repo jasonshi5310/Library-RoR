@@ -1,0 +1,21 @@
+<h1> Search For A Book</h1>
+<%= form_for @patron_search do |ps| %>
+<div class="field">
+  <%= ps.label :title%><br />
+  <%= ps.text_field :title%>
+</div>
+
+<div class="field">
+  <%= ps.label :author%><br />
+  <%= ps.text_field :author%>
+</div>
+
+<div class="field">
+  <%= ps.label :isbn%><br />
+  <%= ps.text_field :isbn%>
+</div>
+
+<p><%= ps.submit "Search" %></p>
+
+<%end%>
+<div> <%= link_to "Back", patron_index_path %> </div>

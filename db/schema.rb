@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_05_063533) do
+ActiveRecord::Schema.define(version: 2020_12_06_001704) do
+
+  create_table "admin_searches", force: :cascade do |t|
+    t.string "title"
+    t.string "author"
+    t.string "isbn"
+    t.integer "copies"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "books", force: :cascade do |t|
     t.string "title"
@@ -21,14 +30,22 @@ ActiveRecord::Schema.define(version: 2020_12_05_063533) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "comments", force: :cascade do |t|
-    t.string "commenter"
+  create_table "patron_searches", force: :cascade do |t|
+    t.string "title"
+    t.string "author"
+    t.string "isbn"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.string "reviewer"
     t.text "body"
     t.integer "book_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["book_id"], name: "index_comments_on_book_id"
+    t.index ["book_id"], name: "index_reviews_on_book_id"
   end
 
-  add_foreign_key "comments", "books"
+  add_foreign_key "reviews", "books"
 end

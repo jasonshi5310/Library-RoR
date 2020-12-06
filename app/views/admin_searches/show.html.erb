@@ -1,0 +1,29 @@
+ <h1>Search Results</h1>
+    <% if @admin_search.admin_search.empty? %>
+      <h1> No Books Found!</h1>
+    <%else%>
+        <table>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>ISBN</th>
+            <!-- <th>Copies</th> -->
+            <th>Link</th>
+        </tr>
+        <br>
+        <% @admin_search.admin_search.each do |book| %>
+        <tr>
+            <td style="text-align:center"><%= book.title %></td>
+            <td style="text-align:center"><%= book.author %></td>
+            <td style="text-align:center"><%= book.isbn%></td>
+                    <!-- <td><%= book.copies%></td> -->
+            <!-- <td style="padding-right: 10px"><%= link_to 'Show', book_path(book) %></td> -->
+            <td style="padding-right: 10px"><%= link_to 'Edit', edit_book_path(book, :as_id => @admin_search.id) %></td>
+            <td style="padding-right: 10px"><%= link_to 'Checkout', checkout_path(:id => book.id, :as_id => @admin_search.id),
+            data:{Confirm: 'Are you sure to check this book out?'} if book.copies > 0%></td>
+        </tr>
+        <%end%>
+        </table>
+    <%end%>
+<br>
+<p> <%= link_to "Back",  new_admin_search_path %> </p>

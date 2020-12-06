@@ -1,5 +1,10 @@
 <h1>Here is all the Book in the Library:<h1>
 <br>
+<% flash.each do |type, msg| %>
+  <div>
+    <%= msg %>
+  </div>
+<% end %>
 <table>
     <tr>
         <th>Title</th>
@@ -14,10 +19,11 @@
         <td><%= book.title %></td>
         <td><%= book.author %></td>
         <td><%= book.isbn%></td>
-        <td><%= book.copies%></td>
+        <!-- <td><%= book.copies%></td> -->
         <td style="padding-right: 10px"><%= link_to 'Show', book_path(book) %></td>
         <td style="padding-right: 10px"><%= link_to 'Edit', edit_book_path(book) %></td>
-        <td style="padding-right: 10px"><%= link_to 'Checkout', checkout_path(book), data:{Confirm: 'Are you sure to check this book out?'} %></td>
+        <td style="padding-right: 10px"><%= link_to 'Checkout', checkout_path(:id => book.id),
+         data:{Confirm: 'Are you sure to check this book out?'}%></td>
     </tr>
     <%end%>
 </table>

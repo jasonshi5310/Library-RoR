@@ -17,23 +17,10 @@
     <%= form.label :copies %><br>
     <%= form.text_field :copies %>
 </p>
-
+<p hidden><%= form.hidden_field :as_id, value: params[:as_id] %></p>
 <p> <%= form.submit %>
 </p>
 
 <%end%>
-
-<%if @book.errors.any? %>
-<div id='error_explaination'>
-    <h2>
-    There seems to be incorrect inputs!
-    Read the following error msg carefully!
-    </h2>
-    <ul>
-        <% @book.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-        <%end%>
-    </ul>
-</div>
-<%end%>
-<button> <%= link_to "Back to admin page", administrator_index_path %> </button>
+<p><%= notice %></p>
+<p> <%= link_to "Back", admin_search_path(:action=>"show", :controller=>"admin_searches", id: params[:as_id]) %> </p>

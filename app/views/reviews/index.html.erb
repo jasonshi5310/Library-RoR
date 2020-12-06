@@ -1,0 +1,35 @@
+<p hidden> <%= @book = Book.find(params[:book_id]) %></p>
+<h1>View Reviews For The Following Book</h1>
+<p> 
+<strong>Title:</strong>
+<%= @book.title %>
+</p>
+<p> 
+<strong>Author:</strong>
+<%= @book.author %>
+</p>
+<p> 
+<strong>ISBN:</strong>
+<%= @book.isbn %>
+</p>
+<p> 
+<strong>Copies:</strong>
+<%= @book.copies %>
+</p>
+<br>
+<!-- <button> <%= link_to "View other books", books_path %> </button> -->
+<br>
+<h2>Reviews</h2>
+<% @book.reviews.each do |review| %>
+    <p>
+     <strong>Name</strong>
+     <%= review.reviewer%>
+    </p>
+    <p>
+     <strong>Review</strong>
+     <%= review.body%>
+    </p>
+
+<%end%>
+<br>
+<p> <%= link_to "Back", patron_search_path(params[:ps_id]) %> </p>

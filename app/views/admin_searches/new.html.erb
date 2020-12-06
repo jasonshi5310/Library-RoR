@@ -1,0 +1,22 @@
+<h1> Search For A Book</h1>
+<%= form_for @admin_search do |as| %>
+<div class="field">
+  <%= as.label :title%><br />
+  <%= as.text_field :title%>
+</div>
+
+<div class="field">
+  <%= as.label :author%><br />
+  <%= as.text_field :author%>
+</div>
+
+<div class="field">
+  <%= as.label :isbn%><br />
+  <%= as.text_field :isbn%>
+</div>
+
+<p><%= as.submit "Search" %></p>
+
+<%end%>
+
+<div> <%= link_to "Back", administrator_index_path %> </div>
