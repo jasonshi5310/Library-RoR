@@ -21,7 +21,7 @@
             <%= link_to 'Add Review', book_path(book, :ps_id => @patron_search.id) %>
             </td>
             <td style="padding-right: 10px">
-            <%= link_to 'View Reviews', book_reviews_path(book, :ps_id => @patron_search.id) if book.reviews != []%>
+            <%= link_to 'View Reviews', book_reviews_path(book, :ps_id => @patron_search.id)%>
             </td>
         </tr>
         <%end%>

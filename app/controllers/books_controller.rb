@@ -37,10 +37,11 @@ class BooksController < ApplicationController
         @book = Book.find(params[:id])
         asid = params[:book][:as_id]
         if @book.update(params.require(:book).permit(:title, :author, :isbn, :copies))
-            redirect_to admin_search_path(:action=>"show", :controller=>"admin_searches", id: asid)
+            # redirect_to admin_search_path(:action=>"show", :controller=>"admin_searches", id: asid)
+            redirect_to new_admin_search_path
         else
             # render 'edit'
-            flash[:notice] = "Some inputs are incorrect! The values are set back to the original ones!"
+            flash[:notice] = "Some inputs are incorrect! \nThe values are set back to the original ones!\n Please try again!"
             redirect_to edit_book_path(id: params[:id], as_id: asid)
         end
     end
@@ -50,10 +51,10 @@ class BooksController < ApplicationController
         if @book.copies > 0
             @book.checkout
             @book.save!
-            redirect_to admin_search_path(:action=>"show", :controller=>"admin_searches", id: params[:as_id])
+            redirect_to new_admin_search_path
         else
+            flash[:notice] = "No More Copies To Checkout For that book!"
             redirect_to admin_search_path(:action=>"show", :controller=>"admin_searches", id: params[:as_id])
-            flash.alert = "No More Copies For that book"
         end
     end
 end

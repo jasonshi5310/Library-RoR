@@ -18,7 +18,20 @@
 </p>
 -->
 <br>
-<!-- <button> <%= link_to "View other books", books_path %> </button> -->
+<!-- <button> <%= link_to "View other books", books_path %> </button>
+<br>
+-->
+<br>
+<p> <%= link_to "Back", patron_search_path(params[:ps_id]) %> </p>
+<br>
+<h2> Add A Review:</h2>
+<%= form_with(model: [@book, @book.reviews.build], local:true) do |form| %>
+    <p> <label>Name:</label><br> <%= form.text_field :reviewer %>  </p>
+    <p> <label>Review:<label> <br> <%= form.text_field :body %>  </p>
+    <p hidden><%= form.hidden_field :ps_id, value: params[:ps_id] %></p>
+    <p> <%= form.submit %>
+<%end%>
+<p><%= notice %></p>
 <br>
 <h2>Reviews</h2>
 <% @book.reviews.each do |review| %>
@@ -32,15 +45,3 @@
     </p>
 
 <%end%>
-
-<br>
-<p> <%= link_to "Back", patron_search_path(params[:ps_id]) %> </p>
-<br>
-<h2> Add A Review:</h2>
-<%= form_with(model: [@book, @book.reviews.build], local:true) do |form| %>
-    <p> <label>Name:</label><br> <%= form.text_field :reviewer %>  </p>
-    <p> <label>Review:<label> <br> <%= form.text_field :body %>  </p>
-    <p hidden><%= form.hidden_field :ps_id, value: params[:ps_id] %></p>
-    <p> <%= form.submit %>
-<%end%>
-<p><%= notice %></p>
